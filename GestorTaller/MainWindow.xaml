@@ -1,0 +1,75 @@
+﻿<Window x:Class="GestorTaller.MainWindow"
+                xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+                Title="Gestion de taller" Height="700" Width="1024" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="/Logo.ico" Closed="Window_Closed">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Designer.jpeg" TileMode="None" Opacity="0.3"/>
+        </Grid.Background>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+
+        <telerik:RadButton Grid.Column="0" Grid.Row="1" Content="🔧 Reparaciones"  VerticalAlignment="Center" Width="300" telerik:StyleManager.Theme="Summer" Height="70" FontFamily="Agency FB" FontSize="40" AutomationProperties.Name="btnMenuReparaciones" CornerRadius="40,40,40,40" BorderThickness="0,0,0,0" HorizontalAlignment="Right">
+            <telerik:RadButton.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFD2D2D2" Offset="0.069"/>
+                    <GradientStop Color="White" Offset="0.87"/>
+                </LinearGradientBrush>
+            </telerik:RadButton.Background>
+        </telerik:RadButton>
+        <telerik:RadButton Grid.Column="1" Grid.Row="1" Content="📄Clientes" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="300" telerik:StyleManager.Theme="Summer" Height="70" FontFamily="Agency FB" FontSize="40" AutomationProperties.Name="btnMenuClientes" Click="ClickBtnMenuClientes" CornerRadius="40,40,40,40" BorderThickness="0,0,0,0">
+            <telerik:RadButton.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFD2D2D2" Offset="0.069"/>
+                    <GradientStop Color="White" Offset="0.87"/>
+                </LinearGradientBrush>
+            </telerik:RadButton.Background>
+        </telerik:RadButton>
+        <telerik:RadButton Grid.Column="2" Grid.Row="1" Content="🛞Rodados" HorizontalAlignment="Left"  VerticalAlignment="Center" Width="300" telerik:StyleManager.Theme="Summer" Height="70" FontFamily="Agency FB" FontSize="40" AutomationProperties.Name="btnMenuRodados" Margin="20,0,0,0" CornerRadius="40,40,40,40" BorderThickness="0,0,0,0">
+            <telerik:RadButton.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFD2D2D2" Offset="0.069"/>
+                    <GradientStop Color="White" Offset="0.87"/>
+                </LinearGradientBrush>
+            </telerik:RadButton.Background>
+        </telerik:RadButton>
+        <telerik:RadButton Grid.Column="2" Grid.Row="2" Content="Salir"  VerticalAlignment="Center" telerik:StyleManager.Theme="Summer" Height="34" FontFamily="Agency FB" FontSize="25" AutomationProperties.Name="btnMenuRodados" Margin="261,0,0,0" Click="ClickBtnMenuSalir" FontWeight="Bold" HorizontalAlignment="Left" Width="59" BorderThickness="0,0,0,0" CornerRadius="17,17,17,17">
+            <telerik:RadButton.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFFD3C3C" Offset="1"/>
+                    <GradientStop Color="White" Offset="0"/>
+                </LinearGradientBrush>
+            </telerik:RadButton.Background>
+        </telerik:RadButton>
+        <Label x:Name="lblHora" Content="00:00" HorizontalAlignment="Center" Margin="0,104,0,0" VerticalAlignment="Top" FontSize="130" IsEnabled="False" FontWeight="Bold" Background="{x:Null}" Grid.Column="1" FontFamily="Agency FB">
+            <Label.Foreground>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF060606" Offset="1"/>
+                    <GradientStop Color="#FF040404" Offset="0"/>
+                    <GradientStop Color="#FF595A59" Offset="0.5"/>
+                </LinearGradientBrush>
+            </Label.Foreground>
+        </Label>
+        <Label x:Name="lblFecha" Content="FECHA 00/00/0000" HorizontalAlignment="Center" VerticalAlignment="Top" FontFamily="Agency FB" FontSize="40" Height="47" Margin="0,52,0,0" FontWeight="Bold" Background="{x:Null}" Grid.Column="1">
+            <Label.Foreground>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0" SpreadMethod="Pad" Opacity="1">
+                    <GradientStop Color="#FF060606" Offset="1"/>
+                    <GradientStop Color="#FF040404" Offset="0"/>
+                    <GradientStop Color="#FF595A59" Offset="0.5"/>
+                </LinearGradientBrush>
+            </Label.Foreground>
+        </Label>
+
+    </Grid>
+</Window>
