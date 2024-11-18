@@ -84,42 +84,30 @@ namespace GestorTaller
             {
                 try
                 {
+                    // Iniciar una transacción
                     using (SQLiteConnection connection = new SQLiteConnection(connectionString))
                     {
                         connection.Open();
-
-                        // Iniciar una transacción
-                        using (var transaction = connection.BeginTransaction())
+                        string sql = "UPDATE Clientes SET Nombre = @nombre ,Documento = @documento, Telefono= @telefono WHERE Id = @id;";
+                        using (SQLiteCommand command = new SQLiteCommand(sql, connection))
                         {
-                            string sql = "UPDATE Clientes SET Nombre = @nombre, Documento = @documento ,Telefono =@telefono WHERE Id= @id;";
-                            using (SQLiteCommand command = new SQLiteCommand(sql, connection))
-                            {
-                                ClientesWin cli = new ClientesWin();
-                                command.Parameters.AddWithValue("@nombre", txtModClienteNombre.Text);
-                                command.Parameters.AddWithValue("@documento", txtModClienteDocumento.Text);
-                                command.Parameters.AddWithValue("@telefono", txtModClienteTelefono.Text);
-                                command.Parameters.AddWithValue("@id",txtModClienteDocumento.Text);
+                            command.Parameters.AddWithValue("@id", lblIdCliente.Content);
+                            command.Parameters.AddWithValue("@nombre", txtModClienteNombre.Text);
+                            command.Parameters.AddWithValue("@documento", txtModClienteDocumento.Text);
+                            command.Parameters.AddWithValue("@telefono", txtModClienteTelefono.Text);
 
-                                command.ExecuteNonQuery();
-                            }
-                            // Confirmar la transacción
-                            transaction.Commit();
+                            command.ExecuteNonQuery();
                         }
-
-                        MessageBox.Show("Cliente modificado con éxito!");
-
-                        txtModClienteTelefono.Text = string.Empty;
-                        txtModClienteNombre.Text = string.Empty;
-                        txtModClienteDocumento.Text = string.Empty;
-
-                        this.Close();
                     }
+
+                    MessageBox.Show("Datos modificados con éxito!");
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show($"Error: {ex.Message}");
                 }
             }
+            this.Close();
         }
 
         private void btnCancelarModCliente_Click(object sender, RoutedEventArgs e)

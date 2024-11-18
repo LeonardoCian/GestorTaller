@@ -94,6 +94,7 @@ namespace GestorTaller
 
         private void txtBuscarClientes_TextChanged(object sender, TextChangedEventArgs e)
         {
+            List<Clientes> clientesLista = new List<Clientes>();
             using (SQLiteConnection connection = new SQLiteConnection(connectionString))
             {
                 datagridClientes.ItemsSource = null;
@@ -103,20 +104,30 @@ namespace GestorTaller
                 connection.Open();
 
                 // Crear el comando SQL
-                string sql = "SELECT * FROM Clientes WHERE Nombre LIKE @parametro OR Documento LIKE @parametro;";
+                string sql = "SELECT Id,Nombre,Documento,Telefono FROM Clientes WHERE Nombre LIKE @parametro OR Documento LIKE @parametro;";
+
                 using (SQLiteCommand command = new SQLiteCommand(sql, connection))
                 {
 
                     command.Parameters.AddWithValue("@parametro", "%" + txtBuscarClientes.Text + "%");
 
+                    using (SQLiteDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Clientes cliente = new Clientes
+                            {
+                                Id = reader.GetInt32(0), // Obtener el Id
+                                Nombre = reader.GetString(1), // Obtener el Nombre
+                                Documento = reader.GetString(2), // Obtener el Documento
+                                Telefono = reader.GetString(3) // Obtener el Telefono
+                            };
 
-                    // Crear un adaptador para llenar el DataTable
-                    SQLiteDataAdapter adapter = new SQLiteDataAdapter(command);
-                    DataTable dataTable = new DataTable();
-                    adapter.Fill(dataTable);
+                            clientesLista.Add(cliente); // Agregar a la lista
+                        }
 
-                    // Asignar el DataTable como fuente de datos del DataGrid
-                    datagridClientes.ItemsSource = dataTable.DefaultView;
+                        datagridClientes.ItemsSource = clientesLista;
+                    }
                 }
             }
         }
