@@ -42,12 +42,12 @@
         <Label Content="N° Documento:" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Agency FB" FontSize="30" />
         <Label Content="Telefono:" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="5" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Agency FB" FontSize="30" />
 
-        <TextBox x:Name="txtNombreNuevoCliente" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="2" FontSize="30" FontFamily="Agency FB" TextAlignment="Center" MaxLines="1" MaxLength="100" Cursor="IBeam" AutomationProperties.Name="txtClientesNombre"/>
-        <TextBox x:Name="txtDocumentoNuevoCliente" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="4" FontSize="30" FontFamily="Agency FB" TextAlignment="Center" MaxLines="1" MaxLength="100" Cursor="IBeam" AutomationProperties.Name="txtClientesDNI" PreviewTextInput="txtDocumentoNuevoCliente_PreviewTextInput"/>
-        <TextBox x:Name="txtTelefonoNuevoCliente" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="6" FontSize="30" FontFamily="Agency FB" TextAlignment="Center" MaxLines="1" MaxLength="100" Cursor="IBeam" AutomationProperties.Name="txtClientesTelefono" PreviewTextInput="txtTelefonoNuevoCliente_PreviewTextInput"/>
+        <TextBox x:Name="txtNombreNuevoCliente" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="2" FontSize="30" FontFamily="Agency FB" TextAlignment="Center" MaxLines="1" MaxLength="100" Cursor="IBeam" AutomationProperties.Name="txtClientesNombre" ToolTip="Nombre completo (max 40 caracteres)"/>
+        <TextBox x:Name="txtDocumentoNuevoCliente" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="4" FontSize="30" FontFamily="Agency FB" TextAlignment="Center" MaxLines="1" MaxLength="100" Cursor="IBeam" AutomationProperties.Name="txtClientesDNI" PreviewTextInput="txtDocumentoNuevoCliente_PreviewTextInput" ToolTip="Numero de documento (max 8 caracteres)"/>
+        <TextBox x:Name="txtTelefonoNuevoCliente" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="6" FontSize="30" FontFamily="Agency FB" TextAlignment="Center" MaxLines="1" MaxLength="100" Cursor="IBeam" AutomationProperties.Name="txtClientesTelefono" PreviewTextInput="txtTelefonoNuevoCliente_PreviewTextInput" ToolTip="Numero de contacto (max 10 caracteres)"/>
 
 
-        <telerik:RadButton x:Name="btnCancelarNuevoCliente"  Grid.Column="1" Grid.Row="7" HorizontalAlignment="Center" VerticalAlignment="Center" Content="🚫 Cancelar" Width="160" Height="50" FontSize="30" FontFamily="Agency FB" Click="clickCancelarNuevoCliente" telerik:StyleManager.Theme="Summer" AutomationProperties.Name="btnClientesCancelar" BorderThickness="0,0,0,0" CornerRadius="30,30,30,30" >
+        <telerik:RadButton x:Name="btnCancelarNuevoCliente"  Grid.Column="1" Grid.Row="7" HorizontalAlignment="Center" VerticalAlignment="Center" Content="🚫 Cancelar" Width="160" Height="50" FontSize="30" FontFamily="Agency FB" Click="clickCancelarNuevoCliente" telerik:StyleManager.Theme="Summer" AutomationProperties.Name="btnClientesCancelar" BorderThickness="0,0,0,0" CornerRadius="30,30,30,30" ToolTip="cancelar y volver al menú anterior" >
             <telerik:RadButton.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="#FFFFEBC0"/>
@@ -55,7 +55,7 @@
                 </LinearGradientBrush>
             </telerik:RadButton.Background>
         </telerik:RadButton>
-        <telerik:RadButton x:Name="btnGuardarNuevoCliente"  Grid.Column="2" Grid.Row="7" HorizontalAlignment="Center" VerticalAlignment="Center" Content="💾 Guardar" Width="165" Height="50" FontSize="30" FontFamily="Agency FB" telerik:StyleManager.Theme="Summer" AutomationProperties.Name="btnClientesGuardar" Click="txtGuardarNuevoCliente_Click" BorderThickness="0,0,0,0" CornerRadius="30,30,30,30" >
+        <telerik:RadButton x:Name="btnGuardarNuevoCliente"  Grid.Column="2" Grid.Row="7" HorizontalAlignment="Center" VerticalAlignment="Center" Content="💾 Guardar" Width="165" Height="50" FontSize="30" FontFamily="Agency FB" telerik:StyleManager.Theme="Summer" AutomationProperties.Name="btnClientesGuardar" Click="txtGuardarNuevoCliente_Click" BorderThickness="0,0,0,0" CornerRadius="30,30,30,30" ToolTip="Guardar cliente" >
             <telerik:RadButton.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="#FFCCFFD6"/>

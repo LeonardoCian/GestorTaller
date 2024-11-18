@@ -29,28 +29,7 @@ namespace GestorTaller
     {
          public string id,nombre,documento,telefono;
 
-        Clientes clientes = new Clientes();
-
-        // Cadena de conexión a tu base de datos SQLite
-        public string connectionString = "Data Source=C:\\Users\\Leo\\source\\repos\\GestorTaller\\GestorTaller\\Taller.db";
-
-        public ClientesWin()
-        {
-            InitializeComponent();
-        }
-
-        private void ClickBtnClientesSalir(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
-
-        private void ClickBtnClientesNuevo(object sender, RoutedEventArgs e)
-        {
-            NuevoClienteWin nuevoClienteWin = new NuevoClienteWin();
-            nuevoClienteWin.ShowDialog();
-        }
-
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        public void actualizarClientes()
         {
             List<Clientes> clientesLista = new List<Clientes>();
 
@@ -80,6 +59,35 @@ namespace GestorTaller
                     }
                 }
             }
+        }
+
+
+
+
+        Clientes clientes = new Clientes();
+
+        // Cadena de conexión a tu base de datos SQLite
+        public string connectionString = "Data Source=C:\\Users\\Leo\\source\\repos\\GestorTaller\\GestorTaller\\Taller.db";
+
+        public ClientesWin()
+        {
+            InitializeComponent();
+        }
+
+        private void ClickBtnClientesSalir(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void ClickBtnClientesNuevo(object sender, RoutedEventArgs e)
+        {
+            NuevoClienteWin nuevoClienteWin = new NuevoClienteWin();
+            nuevoClienteWin.ShowDialog();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            actualizarClientes();
         }
 
         // Busqueda a medida que se va tipeando en el TextBox
@@ -118,6 +126,7 @@ namespace GestorTaller
             btnEliminarClientes.IsEnabled = true;
             btnEditarClientes.IsEnabled = true;
             btnCancelarClientes.IsEnabled = true;
+            btnClienteRodados.IsEnabled = true;
 
             try
             {
@@ -146,44 +155,23 @@ namespace GestorTaller
             btnCancelarClientes.IsEnabled = false;
             btnEditarClientes.IsEnabled = false;
             btnEliminarClientes.IsEnabled = false;
+            btnClienteRodados.IsEnabled = false;
+        }
+
+        private void Window_Activated(object sender, EventArgs e)
+        {
+            actualizarClientes();
         }
 
         private void RadButton_Click(object sender, RoutedEventArgs e)
         {
-
-            List<Clientes> clientesLista = new List<Clientes>();
-
-            using (SQLiteConnection connection = new SQLiteConnection(connectionString))
-            {
-                connection.Open();
-                string query = "SELECT Id, Nombre, Documento, Telefono FROM Clientes";
-
-                using (SQLiteCommand command = new SQLiteCommand(query, connection))
-                {
-                    using (SQLiteDataReader reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            Clientes cliente = new Clientes
-                            {
-                                Id = reader.GetInt32(0), // Obtener el Id
-                                Nombre = reader.GetString(1), // Obtener el Nombre
-                                Documento = reader.GetString(2), // Obtener el Documento
-                                Telefono = reader.GetString(3) // Obtener el Telefono
-                            };
-
-                            clientesLista.Add(cliente); // Agregar a la lista
-                        }
-
-                        datagridClientes.ItemsSource = clientesLista;
-                    }
-                }
-            }
+            actualizarClientes();
 
             datagridClientes.SelectedItem = null;
             btnCancelarClientes.IsEnabled = false;
             btnEditarClientes.IsEnabled = false;
             btnEliminarClientes.IsEnabled = false;
+            btnClienteRodados.IsEnabled = false;
         }
 
         private void btnEliminarClientes_Click_1(object sender, RoutedEventArgs e)
@@ -215,36 +203,10 @@ namespace GestorTaller
                     btnCancelarClientes.IsEnabled = false;
                     btnEditarClientes.IsEnabled = false;
                     btnEliminarClientes.IsEnabled = false;
+                    btnClienteRodados.IsEnabled = false;
 
 
-                List<Clientes> clientesLista = new List<Clientes>();
-
-                using (SQLiteConnection connection = new SQLiteConnection(connectionString))
-                {
-                    connection.Open();
-                    string query = "SELECT Id, Nombre, Documento, Telefono FROM Clientes";
-
-                    using (SQLiteCommand command = new SQLiteCommand(query, connection))
-                    {
-                        using (SQLiteDataReader reader = command.ExecuteReader())
-                        {
-                            while (reader.Read())
-                            {
-                                Clientes cliente = new Clientes
-                                {
-                                    Id = reader.GetInt32(0), // Obtener el Id
-                                    Nombre = reader.GetString(1), // Obtener el Nombre
-                                    Documento = reader.GetString(2), // Obtener el Documento
-                                    Telefono = reader.GetString(3) // Obtener el Telefono
-                                };
-
-                                clientesLista.Add(cliente); // Agregar a la lista
-                            }
-
-                            datagridClientes.ItemsSource = clientesLista;
-                        }
-                    }
-                }
+                actualizarClientes();
 
 
             }
