@@ -48,6 +48,12 @@ namespace GestorTaller
         {
             Application.Current.Shutdown();
         }
+
+        private void RadButton_Click(object sender, RoutedEventArgs e)
+        {
+            RodadosWin rodados = new RodadosWin();
+            rodados.ShowDialog();   
+        }
     }
 }
     

@@ -27,15 +27,12 @@ namespace GestorTaller
         }
 
         
-        
-
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs exit)
         {
-            exit.Cancel = true;
             txtModClienteDocumento.Text = string.Empty;
             txtModClienteNombre.Text = string.Empty;
             txtModClienteTelefono.Text = string.Empty;
-            this.Hide();
+            lblIdCliente.Content= string.Empty;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)

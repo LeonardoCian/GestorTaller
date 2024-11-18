@@ -36,7 +36,7 @@
                 </LinearGradientBrush>
             </telerik:RadButton.Background>
         </telerik:RadButton>
-        <telerik:RadButton Grid.Column="2" Grid.Row="1" Content="🛞Rodados" HorizontalAlignment="Left"  VerticalAlignment="Center" Width="300" telerik:StyleManager.Theme="Summer" Height="70" FontFamily="Agency FB" FontSize="40" AutomationProperties.Name="btnMenuRodados" Margin="20,0,0,0" CornerRadius="40,40,40,40" BorderThickness="0,0,0,0" ToolTip="Muestra el registro de rodados">
+        <telerik:RadButton Grid.Column="2" Grid.Row="1" Content="🛞Rodados" HorizontalAlignment="Left"  VerticalAlignment="Center" Width="300" telerik:StyleManager.Theme="Summer" Height="70" FontFamily="Agency FB" FontSize="40" AutomationProperties.Name="btnMenuRodados" Margin="20,0,0,0" CornerRadius="40,40,40,40" BorderThickness="0,0,0,0" ToolTip="Muestra el registro de rodados" Click="RadButton_Click">
             <telerik:RadButton.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="#FFD2D2D2" Offset="0.069"/>

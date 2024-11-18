@@ -30,6 +30,9 @@
   <Page Include="NuevoClienteWin.xaml">
     <Generator>MSBuild:Compile</Generator>
   </Page>
+  <Page Include="RodadosWin.xaml">
+    <Generator>MSBuild:Compile</Generator>
+  </Page>
   <Compile Include="App.xaml.cs">
     <DependentUpon>App.xaml</DependentUpon>
     <SubType>Code</SubType>
@@ -42,6 +45,7 @@
   </Compile>
   <Compile Include="ModClienteWin.xaml.cs" />
   <Compile Include="NuevoClienteWin.xaml.cs" />
+  <Compile Include="RodadosWin.xaml.cs" />
 </ItemGroup>
   
   <ItemGroup>
