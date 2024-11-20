@@ -15,19 +15,13 @@ using System.Windows.Shapes;
 namespace GestorTaller
 {
     /// <summary>
-    /// Lógica de interacción para RodadosWin.xaml
+    /// Lógica de interacción para NuevoRodadoWin.xaml
     /// </summary>
-    public partial class RodadosWin : Window
+    public partial class NuevoRodadoWin : Window
     {
-        public RodadosWin()
+        public NuevoRodadoWin()
         {
             InitializeComponent();
-        }
-
-        private void btnNuevoClientes_Click(object sender, RoutedEventArgs e)
-        {
-            NuevoRodadoWin ventana = new NuevoRodadoWin();
-            ventana.ShowDialog();
         }
     }
 }

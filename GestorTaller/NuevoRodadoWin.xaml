@@ -1,0 +1,131 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GestorTaller"
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" x:Class="GestorTaller.NuevoRodadoWin"
+        mc:Ignorable="d"
+        Title="Añadir Nuevo Rodado" Height="500" Width="1024" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <Grid>
+
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FFD2D2D2" Offset="0.069"/>
+                <GradientStop Color="White" Offset="0.87"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width=".02*"/>
+            <ColumnDefinition Width=".3*"/>
+            <ColumnDefinition Width=".3*"/>
+            <ColumnDefinition Width=".3*" />
+            <ColumnDefinition Width=".3*"/>
+            <ColumnDefinition Width=".3*"/>
+            <ColumnDefinition Width=".3*"/>
+            <ColumnDefinition Width=".02*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="70"/>
+        </Grid.RowDefinitions>
+
+        <telerik:RadComboBox HorizontalAlignment="Center" VerticalAlignment="Top" Width="119" Height="30" Margin="0,116,0,0" Grid.Column="1" telerik:StyleManager.Theme="Summer" FontFamily="Agency FB" FontSize="26" Cursor="Hand" EmptyText="Marca" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <telerik:RadComboBox HorizontalAlignment="Center" VerticalAlignment="Top" Width="119" Height="30" Margin="0,116,0,0" Grid.Column="2" telerik:StyleManager.Theme="Summer" FontFamily="Agency FB" FontSize="26" Cursor="Hand" EmptyText="Rodado" HorizontalContentAlignment="Center"/>
+        <telerik:RadComboBox HorizontalAlignment="Center" VerticalAlignment="Top" Width="119" Height="30" Margin="0,116,0,0" Grid.Column="3" telerik:StyleManager.Theme="Summer" FontFamily="Agency FB" FontSize="26" Cursor="Hand" EmptyText="Clase"/>
+
+
+        <Label Content="RODADO" Grid.Column="1" Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,17,0,0" FontSize="75" FontFamily="Agency FB" FontWeight="Bold">
+            <Label.Foreground>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF060606" Offset="1"/>
+                    <GradientStop Color="#FF040404" Offset="0"/>
+                    <GradientStop Color="#FF595A59" Offset="0.5"/>
+                </LinearGradientBrush>
+            </Label.Foreground>
+        </Label>
+        <WrapPanel Grid.Column="4" HorizontalAlignment="Center" Margin="0,108,0,0" Orientation="Horizontal" VerticalAlignment="Top" Grid.ColumnSpan="3">
+            <Label Content="🔍Buscar:" HorizontalAlignment="Right" Width="103" FontFamily="Agency FB" Foreground="Black" VerticalAlignment="Top" FontSize="24"/>
+            <TextBox VerticalAlignment="Center" Width="278" HorizontalAlignment="Center" FontSize="24" FontFamily="Agency FB" MaxLines="1" Cursor="IBeam" x:Name="txtBuscarClientes" BorderThickness="1,1,1,1" TextAlignment="Center"/>
+        </WrapPanel>
+        <Label Content="CLIENTE" Grid.Column="4" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,17,0,0" FontSize="75" FontFamily="Agency FB" FontWeight="Bold" Grid.ColumnSpan="3">
+            <Label.Foreground>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF060606" Offset="1"/>
+                    <GradientStop Color="#FF040404" Offset="0"/>
+                    <GradientStop Color="#FF595A59" Offset="0.5"/>
+                </LinearGradientBrush>
+            </Label.Foreground>
+        </Label>
+        <DataGrid Grid.Column="4" HorizontalAlignment="Center" Height="256" Margin="0,151,0,0" VerticalAlignment="Top" Width="466" FontFamily="Agency FB" FontSize="26" Cursor="Hand" AutoGenerateColumns="False" IsReadOnly="True" BorderBrush="#FFA5A5A5" SelectionMode="Single" Background="{x:Null}" BorderThickness="0,0,0,0" MinRowHeight="35" CanUserResizeRows="False" Grid.ColumnSpan="3">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="id" Binding="{Binding Id}" Width="40"/>
+                <DataGridTextColumn Header="Nombre y apellido" Binding="{Binding Nombre}" Width="2.2*"/>
+                <DataGridTextColumn Header="Documento" Binding="{Binding Documento}" Width="*"/>
+                <DataGridTextColumn Header="Telefono" Binding="{Binding Telefono}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <telerik:Label Grid.Column="1" Content="Cliente:" HorizontalAlignment="Center" Margin="0,220,0,0" VerticalAlignment="Top" telerik:StyleManager.Theme="Summer" FontFamily="Agency FB" FontSize="26" Width="119" VerticalContentAlignment="Center" HorizontalContentAlignment="Right"/>
+        <telerik:Label Grid.Column="1" Content="Color/es:" HorizontalAlignment="Center" Margin="0,178,0,0" VerticalAlignment="Top" telerik:StyleManager.Theme="Summer" FontFamily="Agency FB" FontSize="26" Width="119" VerticalContentAlignment="Center" HorizontalContentAlignment="Right"/>
+        <TextBox VerticalAlignment="Top" Width="257" HorizontalAlignment="Center" FontSize="26" FontFamily="Agency FB" MaxLines="1" Cursor="IBeam" x:Name="txtBuscarClientes_Copiar" BorderThickness="1,1,1,1" TextAlignment="Center" Grid.Column="2" Margin="0,182,0,0" Grid.ColumnSpan="2"/>
+        <telerik:Label Grid.Column="2" Content="Nombre del cliente" HorizontalAlignment="Center" Margin="0,220,0,0" VerticalAlignment="Top" telerik:StyleManager.Theme="Summer" FontFamily="Agency FB" FontSize="26" Width="257" Grid.ColumnSpan="2" FontWeight="Bold"/>
+        <telerik:Label Grid.Column="1" Content="Documento:" HorizontalAlignment="Center" Margin="0,262,0,0" VerticalAlignment="Top" telerik:StyleManager.Theme="Summer" FontFamily="Agency FB" FontSize="26" Width="119" VerticalContentAlignment="Center" HorizontalContentAlignment="Right"/>
+        <telerik:Label Grid.Column="1" Content="Teléfono:" HorizontalAlignment="Center" Margin="0,304,0,0" VerticalAlignment="Top" telerik:StyleManager.Theme="Summer" FontFamily="Agency FB" FontSize="26" Width="119" VerticalContentAlignment="Center" HorizontalContentAlignment="Right"/>
+        <telerik:Label Grid.Column="2" Content="Id del cliente" HorizontalAlignment="Center" VerticalAlignment="Top" telerik:StyleManager.Theme="Summer" FontFamily="Agency FB" FontSize="26" Width="257" Grid.ColumnSpan="2" Margin="0,346,0,0" FontWeight="Bold"/>
+        <telerik:Label Grid.Column="2" Content="Teléfono del cliente" HorizontalAlignment="Center" Margin="0,304,0,0" VerticalAlignment="Top" telerik:StyleManager.Theme="Summer" FontFamily="Agency FB" FontSize="26" Width="257" Grid.ColumnSpan="2" FontWeight="Bold"/>
+        <telerik:Label Grid.Column="2" Content="Documento del cliente" HorizontalAlignment="Center" Margin="0,262,0,0" VerticalAlignment="Top" telerik:StyleManager.Theme="Summer" FontFamily="Agency FB" FontSize="26" Width="257" Grid.ColumnSpan="2" FontWeight="Bold"/>
+        <telerik:Label Grid.Column="1" Content="ID:" HorizontalAlignment="Center" Margin="0,346,0,0" VerticalAlignment="Top" telerik:StyleManager.Theme="Summer" FontFamily="Agency FB" FontSize="26" Width="119" VerticalContentAlignment="Center" HorizontalContentAlignment="Right"/>
+
+
+        <telerik:RadButton Content="🔙Volver" Grid.Column="1" Grid.Row="1" telerik:StyleManager.Theme="Summer" Height="50" FontSize="24" FontFamily="Agency FB" Panel.ZIndex="2" CornerRadius="30,30,30,30" ClipToBounds="True" BorderThickness="0,0,0,0" Cursor="Hand" VerticalAlignment="Center" HorizontalAlignment="Center" Width="147">
+            <telerik:RadButton.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFD2D2D2" Offset="0"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </telerik:RadButton.Background>
+        </telerik:RadButton>
+
+        <telerik:RadButton Content="🚫Cancelar" Grid.Column="2" Grid.Row="1" telerik:StyleManager.Theme="Summer" Height="50" Width="147" HorizontalAlignment="Center" FontSize="24" FontFamily="Agency FB" Panel.ZIndex="2" CornerRadius="30,30,30,30" ClipToBounds="True" BorderThickness="0,0,0,0" Cursor="Hand" VerticalAlignment="Center">
+            <telerik:RadButton.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFF9E2B1"/>
+                    <GradientStop Color="#FFE3E8EB" Offset="1"/>
+                </LinearGradientBrush>
+            </telerik:RadButton.Background>
+        </telerik:RadButton>
+        <telerik:RadButton Content="➕Añadir" Grid.Column="3" Grid.Row="1" telerik:StyleManager.Theme="Summer" Height="50" Width="147" HorizontalAlignment="Center" FontSize="24" FontFamily="Agency FB" Panel.ZIndex="2" CornerRadius="30,30,30,30" ClipToBounds="True" BorderThickness="0,0,0,0" Cursor="Hand" VerticalAlignment="Center">
+            <telerik:RadButton.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFAEF5BC"/>
+                    <GradientStop Color="#FFE3E8EB" Offset="1"/>
+                </LinearGradientBrush>
+            </telerik:RadButton.Background>
+        </telerik:RadButton>
+        <telerik:RadButton Content="✔️Seleccionar" Grid.Column="4" Grid.Row="1" telerik:StyleManager.Theme="Summer" Height="50" FontSize="24" FontFamily="Agency FB" Panel.ZIndex="2" CornerRadius="30,30,30,30" ClipToBounds="True" BorderThickness="0,0,0,0" Cursor="Hand" VerticalAlignment="Center" HorizontalAlignment="Center" Width="146">
+            <telerik:RadButton.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFAFD3F9" Offset="0"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </telerik:RadButton.Background>
+        </telerik:RadButton>
+        <telerik:RadButton Content="🚫Cancelar" Grid.Column="5" Grid.Row="1" telerik:StyleManager.Theme="Summer" Height="50" Width="147" HorizontalAlignment="Center" FontSize="24" FontFamily="Agency FB" Panel.ZIndex="2" CornerRadius="30,30,30,30" ClipToBounds="True" BorderThickness="0,0,0,0" Cursor="Hand" VerticalAlignment="Center">
+            <telerik:RadButton.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFF9E2B1"/>
+                    <GradientStop Color="#FFE3E8EB" Offset="1"/>
+                </LinearGradientBrush>
+            </telerik:RadButton.Background>
+        </telerik:RadButton>
+        <telerik:RadButton Content="➕Nuevo" Grid.Column="6" Grid.Row="1" telerik:StyleManager.Theme="Summer" Height="50" Width="147" HorizontalAlignment="Center" FontSize="24" FontFamily="Agency FB" Panel.ZIndex="2" CornerRadius="30,30,30,30" ClipToBounds="True" BorderThickness="0,0,0,0" Cursor="Hand" VerticalAlignment="Center">
+            <telerik:RadButton.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFAEF5BC"/>
+                    <GradientStop Color="#FFE3E8EB" Offset="1"/>
+                </LinearGradientBrush>
+            </telerik:RadButton.Background>
+        </telerik:RadButton>
+    </Grid>
+</Window>

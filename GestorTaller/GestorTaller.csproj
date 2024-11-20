@@ -30,6 +30,9 @@
   <Page Include="NuevoClienteWin.xaml">
     <Generator>MSBuild:Compile</Generator>
   </Page>
+  <Page Include="NuevoRodadoWin.xaml">
+    <Generator>MSBuild:Compile</Generator>
+  </Page>
   <Page Include="RodadosWin.xaml">
     <Generator>MSBuild:Compile</Generator>
   </Page>
@@ -38,6 +41,10 @@
     <SubType>Code</SubType>
   </Compile>
   <Compile Include="Clases\Clientes.cs" />
+  <Compile Include="Clases\Marcas.cs" />
+  <Compile Include="Clases\NumRodados.cs" />
+  <Compile Include="Clases\Rodados.cs" />
+  <Compile Include="Clases\Tipos.cs" />
   <Compile Include="ClientesWin.xaml.cs" />
   <Compile Include="MainWindow.xaml.cs">
     <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -45,6 +52,7 @@
   </Compile>
   <Compile Include="ModClienteWin.xaml.cs" />
   <Compile Include="NuevoClienteWin.xaml.cs" />
+  <Compile Include="NuevoRodadoWin.xaml.cs" />
   <Compile Include="RodadosWin.xaml.cs" />
 </ItemGroup>
   

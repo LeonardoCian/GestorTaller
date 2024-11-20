@@ -85,7 +85,7 @@
                 </LinearGradientBrush>
             </telerik:RadButton.Background>
         </telerik:RadButton>
-        <telerik:RadButton x:Name="btnNuevoClientes" Content="➕ Nuevo" Grid.Column="5" Grid.Row="3" telerik:StyleManager.Theme="Summer" Height="60" Width="175" HorizontalAlignment="Center" FontSize="30" VerticalAlignment="Center" FontFamily="Agency FB" Panel.ZIndex="6" CornerRadius="30,30,30,30" ClipToBounds="True" BorderThickness="0,0,0,0" Cursor="Hand">
+        <telerik:RadButton x:Name="btnNuevoClientes" Content="➕ Nuevo" Grid.Column="5" Grid.Row="3" telerik:StyleManager.Theme="Summer" Height="60" Width="175" HorizontalAlignment="Center" FontSize="30" VerticalAlignment="Center" FontFamily="Agency FB" Panel.ZIndex="6" CornerRadius="30,30,30,30" ClipToBounds="True" BorderThickness="0,0,0,0" Cursor="Hand" Click="btnNuevoClientes_Click">
             <telerik:RadButton.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="#FFCCFFD6"/>
@@ -101,7 +101,7 @@
                 </LinearGradientBrush>
             </telerik:RadButton.Background>
         </telerik:RadButton>
-        <telerik:RadButton x:Name="btnClienteRodados" Content="📄Clientes" Grid.Column="5" Grid.Row="2" telerik:StyleManager.Theme="Summer" Height="60" Width="175" FontSize="30" FontFamily="Agency FB" Panel.ZIndex="2" CornerRadius="30,30,30,30" ClipToBounds="True" BorderThickness="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" IsEnabled="False" Cursor="Hand">
+        <telerik:RadButton x:Name="btnClienteRodados" Content="📄Cliente" Grid.Column="5" Grid.Row="2" telerik:StyleManager.Theme="Summer" Height="60" Width="175" FontSize="30" FontFamily="Agency FB" Panel.ZIndex="2" CornerRadius="30,30,30,30" ClipToBounds="True" BorderThickness="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" IsEnabled="False" Cursor="Hand">
             <telerik:RadButton.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="#FF9FF8FF" Offset="0"/>
