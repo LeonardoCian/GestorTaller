@@ -29,41 +29,6 @@ namespace GestorTaller
     {
          public string id,nombre,documento,telefono;
 
-        public void actualizarClientes()
-        {
-            List<Clientes> clientesLista = new List<Clientes>();
-
-            using (SQLiteConnection connection = new SQLiteConnection(connectionString))
-            {
-                connection.Open();
-                string query = "SELECT Id, Nombre, Documento, Telefono FROM Clientes";
-
-                using (SQLiteCommand command = new SQLiteCommand(query, connection))
-                {
-                    using (SQLiteDataReader reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            Clientes cliente = new Clientes
-                            {
-                                Id = reader.GetInt32(0), // Obtener el Id
-                                Nombre = reader.GetString(1), // Obtener el Nombre
-                                Documento = reader.GetString(2), // Obtener el Documento
-                                Telefono = reader.GetString(3) // Obtener el Telefono
-                            };
-
-                            clientesLista.Add(cliente); // Agregar a la lista
-                        }
-
-                        datagridClientes.ItemsSource = clientesLista;
-                    }
-                }
-            }
-        }
-
-
-
-
         Clientes clientes = new Clientes();
 
         // Cadena de conexión a tu base de datos SQLite
@@ -87,7 +52,7 @@ namespace GestorTaller
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            actualizarClientes();
+            clientes.TraerClientes(datagridClientes);
         }
 
         // Busqueda a medida que se va tipeando en el TextBox
@@ -171,12 +136,12 @@ namespace GestorTaller
 
         private void Window_Activated(object sender, EventArgs e)
         {
-            actualizarClientes();
+            clientes.TraerClientes(datagridClientes);
         }
 
         private void RadButton_Click(object sender, RoutedEventArgs e)
         {
-            actualizarClientes();
+            clientes.TraerClientes(datagridClientes);
 
             datagridClientes.SelectedItem = null;
             btnCancelarClientes.IsEnabled = false;
@@ -217,7 +182,7 @@ namespace GestorTaller
                     btnClienteRodados.IsEnabled = false;
 
 
-                actualizarClientes();
+                clientes.TraerClientes(datagridClientes);
 
 
             }

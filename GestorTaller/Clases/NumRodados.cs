@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SQLite;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace GestorTaller.Clases
 {
@@ -10,5 +12,45 @@ namespace GestorTaller.Clases
     {
         public int Id { get; set; }
         public string NumRodado { get; set; }
+
+
+        public void TraerNumRodado(ComboBox box)
+        {
+            List<NumRodados> ListaNumRodado = new List<NumRodados>();
+
+            string connectionString = "Data Source=C:\\Users\\Leo\\source\\repos\\GestorTaller\\GestorTaller\\Taller.db";
+
+            using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+            {
+                connection.Open();
+
+                string query = "SELECT * FROM NumRodados ORDER BY NumRodado ASC;";
+
+                using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                {
+                    NumRodados asd = new NumRodados()
+                    {
+                        Id = 100,
+                        NumRodado = "Seleccionar..."
+                    };
+                        ListaNumRodado.Add(asd);
+
+                    using (SQLiteDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            NumRodados numRodados = new NumRodados
+                            {
+                                Id = reader.GetInt32(0),
+                                NumRodado = reader.GetString(1)
+                            };
+                            ListaNumRodado.Add(numRodados); // Agregar a la lista
+                        }
+                        box.DisplayMemberPath = "NumRodado";
+                        box.ItemsSource = ListaNumRodado;
+                    }
+                }
+            }
+        }
     }
 }

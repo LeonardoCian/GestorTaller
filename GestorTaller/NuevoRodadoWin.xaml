@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:GestorTaller"
         xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" x:Class="GestorTaller.NuevoRodadoWin"
         mc:Ignorable="d"
-        Title="Añadir Nuevo Rodado" Height="500" Width="1024" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+        Title="Añadir Nuevo Rodado" Height="600" Width="1024" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Activated="Window_Activated" DataContext="{Binding}">
+
     <Grid>
 
         <Grid.Background>
@@ -27,13 +28,9 @@
             <ColumnDefinition Width=".02*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
+            <RowDefinition/>
             <RowDefinition Height="70"/>
         </Grid.RowDefinitions>
-
-        <telerik:RadComboBox HorizontalAlignment="Center" VerticalAlignment="Top" Width="119" Height="30" Margin="0,116,0,0" Grid.Column="1" telerik:StyleManager.Theme="Summer" FontFamily="Agency FB" FontSize="26" Cursor="Hand" EmptyText="Marca" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <telerik:RadComboBox HorizontalAlignment="Center" VerticalAlignment="Top" Width="119" Height="30" Margin="0,116,0,0" Grid.Column="2" telerik:StyleManager.Theme="Summer" FontFamily="Agency FB" FontSize="26" Cursor="Hand" EmptyText="Rodado" HorizontalContentAlignment="Center"/>
-        <telerik:RadComboBox HorizontalAlignment="Center" VerticalAlignment="Top" Width="119" Height="30" Margin="0,116,0,0" Grid.Column="3" telerik:StyleManager.Theme="Summer" FontFamily="Agency FB" FontSize="26" Cursor="Hand" EmptyText="Clase"/>
 
 
         <Label Content="RODADO" Grid.Column="1" Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,17,0,0" FontSize="75" FontFamily="Agency FB" FontWeight="Bold">
@@ -47,7 +44,7 @@
         </Label>
         <WrapPanel Grid.Column="4" HorizontalAlignment="Center" Margin="0,108,0,0" Orientation="Horizontal" VerticalAlignment="Top" Grid.ColumnSpan="3">
             <Label Content="🔍Buscar:" HorizontalAlignment="Right" Width="103" FontFamily="Agency FB" Foreground="Black" VerticalAlignment="Top" FontSize="24"/>
-            <TextBox VerticalAlignment="Center" Width="278" HorizontalAlignment="Center" FontSize="24" FontFamily="Agency FB" MaxLines="1" Cursor="IBeam" x:Name="txtBuscarClientes" BorderThickness="1,1,1,1" TextAlignment="Center"/>
+            <TextBox VerticalAlignment="Center" Width="278" HorizontalAlignment="Center" FontSize="24" FontFamily="Agency FB" MaxLines="1" Cursor="IBeam" x:Name="txtBuscarClientes" BorderThickness="1,1,1,1" TextAlignment="Center" TextChanged="txtBuscarClientes_TextChanged" ForceCursor="True"/>
         </WrapPanel>
         <Label Content="CLIENTE" Grid.Column="4" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,17,0,0" FontSize="75" FontFamily="Agency FB" FontWeight="Bold" Grid.ColumnSpan="3">
             <Label.Foreground>
@@ -58,27 +55,30 @@
                 </LinearGradientBrush>
             </Label.Foreground>
         </Label>
-        <DataGrid Grid.Column="4" HorizontalAlignment="Center" Height="256" Margin="0,151,0,0" VerticalAlignment="Top" Width="466" FontFamily="Agency FB" FontSize="26" Cursor="Hand" AutoGenerateColumns="False" IsReadOnly="True" BorderBrush="#FFA5A5A5" SelectionMode="Single" Background="{x:Null}" BorderThickness="0,0,0,0" MinRowHeight="35" CanUserResizeRows="False" Grid.ColumnSpan="3">
+        <DataGrid x:Name="dgNuevoRodadoClientes" Grid.Column="4" Grid.ColumnSpan="3" HorizontalAlignment="Center" Height="353" Margin="0,151,0,0" VerticalAlignment="Top" Width="466" FontFamily="Agency FB" FontSize="24" Cursor="Hand" AutoGenerateColumns="False" IsReadOnly="True" BorderBrush="#FFA5A5A5" SelectionMode="Single" Background="{x:Null}" BorderThickness="0,0,0,0" MinRowHeight="35" CanUserResizeRows="False">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="id" Binding="{Binding Id}" Width="40"/>
-                <DataGridTextColumn Header="Nombre y apellido" Binding="{Binding Nombre}" Width="2.2*"/>
+                <DataGridTextColumn Header="id" Binding="{Binding Id}" Width="35"/>
+                <DataGridTextColumn Header="Nombre y apellido" Binding="{Binding Nombre}" Width="1.8*"/>
                 <DataGridTextColumn Header="Documento" Binding="{Binding Documento}" Width="*"/>
                 <DataGridTextColumn Header="Telefono" Binding="{Binding Telefono}" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
-        <telerik:Label Grid.Column="1" Content="Cliente:" HorizontalAlignment="Center" Margin="0,220,0,0" VerticalAlignment="Top" telerik:StyleManager.Theme="Summer" FontFamily="Agency FB" FontSize="26" Width="119" VerticalContentAlignment="Center" HorizontalContentAlignment="Right"/>
-        <telerik:Label Grid.Column="1" Content="Color/es:" HorizontalAlignment="Center" Margin="0,178,0,0" VerticalAlignment="Top" telerik:StyleManager.Theme="Summer" FontFamily="Agency FB" FontSize="26" Width="119" VerticalContentAlignment="Center" HorizontalContentAlignment="Right"/>
-        <TextBox VerticalAlignment="Top" Width="257" HorizontalAlignment="Center" FontSize="26" FontFamily="Agency FB" MaxLines="1" Cursor="IBeam" x:Name="txtBuscarClientes_Copiar" BorderThickness="1,1,1,1" TextAlignment="Center" Grid.Column="2" Margin="0,182,0,0" Grid.ColumnSpan="2"/>
-        <telerik:Label Grid.Column="2" Content="Nombre del cliente" HorizontalAlignment="Center" Margin="0,220,0,0" VerticalAlignment="Top" telerik:StyleManager.Theme="Summer" FontFamily="Agency FB" FontSize="26" Width="257" Grid.ColumnSpan="2" FontWeight="Bold"/>
-        <telerik:Label Grid.Column="1" Content="Documento:" HorizontalAlignment="Center" Margin="0,262,0,0" VerticalAlignment="Top" telerik:StyleManager.Theme="Summer" FontFamily="Agency FB" FontSize="26" Width="119" VerticalContentAlignment="Center" HorizontalContentAlignment="Right"/>
-        <telerik:Label Grid.Column="1" Content="Teléfono:" HorizontalAlignment="Center" Margin="0,304,0,0" VerticalAlignment="Top" telerik:StyleManager.Theme="Summer" FontFamily="Agency FB" FontSize="26" Width="119" VerticalContentAlignment="Center" HorizontalContentAlignment="Right"/>
-        <telerik:Label Grid.Column="2" Content="Id del cliente" HorizontalAlignment="Center" VerticalAlignment="Top" telerik:StyleManager.Theme="Summer" FontFamily="Agency FB" FontSize="26" Width="257" Grid.ColumnSpan="2" Margin="0,346,0,0" FontWeight="Bold"/>
-        <telerik:Label Grid.Column="2" Content="Teléfono del cliente" HorizontalAlignment="Center" Margin="0,304,0,0" VerticalAlignment="Top" telerik:StyleManager.Theme="Summer" FontFamily="Agency FB" FontSize="26" Width="257" Grid.ColumnSpan="2" FontWeight="Bold"/>
-        <telerik:Label Grid.Column="2" Content="Documento del cliente" HorizontalAlignment="Center" Margin="0,262,0,0" VerticalAlignment="Top" telerik:StyleManager.Theme="Summer" FontFamily="Agency FB" FontSize="26" Width="257" Grid.ColumnSpan="2" FontWeight="Bold"/>
-        <telerik:Label Grid.Column="1" Content="ID:" HorizontalAlignment="Center" Margin="0,346,0,0" VerticalAlignment="Top" telerik:StyleManager.Theme="Summer" FontFamily="Agency FB" FontSize="26" Width="119" VerticalContentAlignment="Center" HorizontalContentAlignment="Right"/>
 
 
-        <telerik:RadButton Content="🔙Volver" Grid.Column="1" Grid.Row="1" telerik:StyleManager.Theme="Summer" Height="50" FontSize="24" FontFamily="Agency FB" Panel.ZIndex="2" CornerRadius="30,30,30,30" ClipToBounds="True" BorderThickness="0,0,0,0" Cursor="Hand" VerticalAlignment="Center" HorizontalAlignment="Center" Width="147">
+
+        <telerik:Label Grid.Column="1" Content="Cliente:" HorizontalAlignment="Center" VerticalAlignment="Top" telerik:StyleManager.Theme="Summer" FontFamily="Agency FB" FontSize="26" Width="119" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" Margin="0,275,0,0" Padding="5,3,5,10"/>
+        <telerik:Label Grid.Column="1" Content="Color/es:" HorizontalAlignment="Center" VerticalAlignment="Top" telerik:StyleManager.Theme="Summer" FontFamily="Agency FB" FontSize="26" Width="119" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" Margin="0,226,0,0" Padding="5,3,5,10"/>
+        <TextBox VerticalAlignment="Top" Width="257" HorizontalAlignment="Center" FontSize="26" FontFamily="Agency FB" MaxLines="1" Cursor="IBeam" x:Name="txtColor" BorderThickness="1,1,1,1" TextAlignment="Center" Grid.Column="2" Grid.ColumnSpan="2" Margin="0,226,0,0" Padding="0,0,0,10" VerticalContentAlignment="Center"/>
+        <telerik:Label Grid.Column="2" Content="Nombre del cliente" HorizontalAlignment="Center" VerticalAlignment="Top" telerik:StyleManager.Theme="Summer" FontFamily="Agency FB" FontSize="26" Width="257" Grid.ColumnSpan="2" FontWeight="Bold" Margin="0,275,0,0" Padding="5,3,5,10"/>
+        <telerik:Label Grid.Column="1" Content="Documento:" HorizontalAlignment="Center" Margin="0,324,0,0" VerticalAlignment="Top" telerik:StyleManager.Theme="Summer" FontFamily="Agency FB" FontSize="26" Width="119" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" Padding="5,3,5,10"/>
+        <telerik:Label Grid.Column="1" Content="Teléfono:" HorizontalAlignment="Center" Margin="0,373,0,0" VerticalAlignment="Top" telerik:StyleManager.Theme="Summer" FontFamily="Agency FB" FontSize="26" Width="119" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" Padding="5,3,5,10"/>
+        <telerik:Label Grid.Column="2" Content="Id del cliente" HorizontalAlignment="Center" VerticalAlignment="Top" telerik:StyleManager.Theme="Summer" FontFamily="Agency FB" FontSize="26" Width="257" Grid.ColumnSpan="2" Margin="0,422,0,0" FontWeight="Bold" Padding="5,3,5,10"/>
+        <telerik:Label Grid.Column="2" Content="Teléfono del cliente" HorizontalAlignment="Center" Margin="0,373,0,0" VerticalAlignment="Top" telerik:StyleManager.Theme="Summer" FontFamily="Agency FB" FontSize="26" Width="257" Grid.ColumnSpan="2" FontWeight="Bold" Padding="5,3,5,10"/>
+        <telerik:Label Grid.Column="2" Content="Documento del cliente" HorizontalAlignment="Center" Margin="0,324,0,0" VerticalAlignment="Top" telerik:StyleManager.Theme="Summer" FontFamily="Agency FB" FontSize="26" Width="257" Grid.ColumnSpan="2" FontWeight="Bold" Padding="5,3,5,10"/>
+        <telerik:Label Grid.Column="1" Content="ID:" HorizontalAlignment="Center" Margin="0,422,0,0" VerticalAlignment="Top" telerik:StyleManager.Theme="Summer" FontFamily="Agency FB" FontSize="26" Width="119" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" Padding="5,3,5,10"/>
+
+
+        <telerik:RadButton x:Name="btnNuevoRodadoVolver" Content="🔙Volver" Grid.Column="1" Grid.Row="1" telerik:StyleManager.Theme="Summer" Height="50" FontSize="24" FontFamily="Agency FB" Panel.ZIndex="2" CornerRadius="30,30,30,30" ClipToBounds="True" BorderThickness="0,0,0,0" Cursor="Hand" VerticalAlignment="Center" HorizontalAlignment="Center" Width="147" Click="btnNuevoRodadoVolver_Click">
             <telerik:RadButton.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="#FFD2D2D2" Offset="0"/>
@@ -127,5 +127,11 @@
                 </LinearGradientBrush>
             </telerik:RadButton.Background>
         </telerik:RadButton>
+        <ComboBox SelectedIndex="0" x:Name="cbMarcas" Grid.Column="1" HorizontalAlignment="Center" Height="40" Margin="0,151,0,0" VerticalAlignment="Top" Width="147" FontFamily="Agency FB" FontSize="26" BorderBrush="#FFACACAC" Text="Marca..." HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Cursor="Hand" FontWeight="Bold"/>
+        <ComboBox SelectedIndex="0" x:Name="cbRodado" Grid.Column="2" HorizontalAlignment="Center" Height="40" Margin="0,151,0,0" VerticalAlignment="Top" Width="147" FontFamily="Agency FB" FontSize="26" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Cursor="Hand" FontWeight="Bold"/>
+        <ComboBox SelectedIndex="0" x:Name="cbTipo" Grid.Column="3" HorizontalAlignment="Center" Height="40" Margin="0,151,0,0" VerticalAlignment="Top" Width="147" FontFamily="Agency FB" FontSize="26" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Cursor="Hand" FontWeight="Bold"/>
+        <Label Content="Marca" HorizontalAlignment="Center" FontFamily="Agency FB" Foreground="Black" VerticalAlignment="Top" FontSize="26" Grid.Column="1" Margin="0,110,0,0"/>
+        <Label Content="Tipo" HorizontalAlignment="Center" FontFamily="Agency FB" Foreground="Black" VerticalAlignment="Top" FontSize="26" Grid.Column="3" Margin="0,110,0,0"/>
+        <Label Content="Rodado" HorizontalAlignment="Center" FontFamily="Agency FB" Foreground="Black" VerticalAlignment="Top" FontSize="26" Grid.Column="2" Margin="0,110,0,0"/>
     </Grid>
 </Window>

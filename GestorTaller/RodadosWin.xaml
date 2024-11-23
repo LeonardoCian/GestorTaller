@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GestorTaller" xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
         mc:Ignorable="d"
-        Title="RodadosWin" Height="700" Width="1024" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+        Title="RodadosWin" Height="700" Width="1024" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Activated="Window_Activated">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="40"/>
@@ -40,20 +40,20 @@
             </Label.Foreground>
         </Label>
         <Label Content="🔍Buscar:" Grid.Column="3" HorizontalAlignment="Right" Width="103" Margin="0,49,0,0" FontFamily="Agency FB" Foreground="Black" VerticalAlignment="Top" FontSize="24"/>
-        <TextBox Grid.Column="3" Grid.ColumnSpan="3" VerticalAlignment="Top" Margin="188,54,0,0" Width="316" HorizontalAlignment="Left" FontSize="24" FontFamily="Agency FB" MaxLines="1" Cursor="IBeam" Name="txtBuscarClientes" BorderThickness="1,1,1,1" TextAlignment="Center"/>
-        <DataGrid Grid.Column="1" Grid.ColumnSpan="4" Margin="0,119,0,0" Name="datagridClientes" Panel.ZIndex="10" AutoGenerateColumns="False" FontFamily="Agency FB" FontSize="26" Cursor="Hand" MinColumnWidth="40" MaxColumnWidth="500" IsReadOnly="True" BorderBrush="#FFA5A5A5" SelectionMode="Single" Background="{x:Null}" BorderThickness="0,0,0,0" MinRowHeight="35" CanUserResizeRows="False" Grid.RowSpan="3">
+        <TextBox Grid.Column="3" Grid.ColumnSpan="3" VerticalAlignment="Top" Margin="188,54,0,0" Width="316" HorizontalAlignment="Left" FontSize="24" FontFamily="Agency FB" MaxLines="1" Cursor="IBeam" Name="txtBuscarClientes" BorderThickness="1,1,1,1" TextAlignment="Center" TextChanged="txtBuscarClientes_TextChanged"/>
+        <DataGrid Grid.Column="1" Grid.ColumnSpan="4" Margin="0,119,0,0" x:Name="dgRodados" Panel.ZIndex="10" AutoGenerateColumns="False" FontFamily="Agency FB" FontSize="26" Cursor="Hand" MinColumnWidth="40" MaxColumnWidth="500" IsReadOnly="True" BorderBrush="#FFA5A5A5" SelectionMode="Single" Background="{x:Null}" BorderThickness="0,0,0,0" MinRowHeight="35" CanUserResizeRows="False" Grid.RowSpan="3" CanUserResizeColumns="False">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="id" Binding="{Binding Id}" Width="40"/>
-                <DataGridTextColumn Header="Nombre Cliente" Binding="{Binding Id_Cliente}" Width="300"/>
+                <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="40"/>
+                <DataGridTextColumn Header="Propietario" Binding="{Binding Id_Cliente}" Width="2*"/>
                 <DataGridTextColumn Header="Marca" Binding="{Binding Id_Marca}" Width="*"/>
-                <DataGridTextColumn Header="Estilo" Binding="{Binding Id_Tipo}" Width="*"/>
-                <DataGridTextColumn Header="Rodado" Binding="{Binding Id_NumRodado}" Width="*"/>
-                <DataGridTextColumn Header="Color/es" Binding="{Binding Color_Colores}" Width="*"/>
+                <DataGridTextColumn Header="Estilo" Binding="{Binding Id_Tipo}" Width=".8*"/>
+                <DataGridTextColumn Header="Rod" Binding="{Binding Id_NumRodado}" Width="40"/>
+                <DataGridTextColumn Header="Color/es" Binding="{Binding Color}" Width="1.5*"/>
             </DataGrid.Columns>
         </DataGrid>
 
 
-        <telerik:RadButton Content="🔙 Volver" Grid.Column="1" Grid.Row="3" telerik:StyleManager.Theme="Summer" Height="60" Width="145" HorizontalAlignment="Left" FontSize="30" FontFamily="Agency FB" Panel.ZIndex="2" Margin="0,15,0,15" CornerRadius="30,30,30,30" ClipToBounds="True" BorderThickness="0,0,0,0" Cursor="Hand">
+        <telerik:RadButton Content="🔙 Volver" Grid.Column="1" Grid.Row="3" telerik:StyleManager.Theme="Summer" Height="60" Width="145" HorizontalAlignment="Left" FontSize="30" FontFamily="Agency FB" Panel.ZIndex="2" Margin="0,15,0,15" CornerRadius="30,30,30,30" ClipToBounds="True" BorderThickness="0,0,0,0" Cursor="Hand" Click="RadButton_Click">
             <telerik:RadButton.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="#FFD2D2D2" Offset="0"/>
@@ -93,7 +93,7 @@
                 </LinearGradientBrush>
             </telerik:RadButton.Background>
         </telerik:RadButton>
-        <telerik:RadButton Content="↺" Grid.Column="5" telerik:StyleManager.Theme="Summer" Width="45" HorizontalAlignment="Right" FontSize="30" FontFamily="Playbill" Height="45" VerticalAlignment="Top" Margin="0,44,5,0" Cursor="Hand" CornerRadius="30,30,30,30" FontWeight="Bold" BorderThickness="0,0,0,0" AutomationProperties.HelpText="Actualizar lista">
+        <telerik:RadButton Content="↺" Grid.Column="5" telerik:StyleManager.Theme="Summer" Width="45" HorizontalAlignment="Right" FontSize="30" FontFamily="Playbill" Height="45" VerticalAlignment="Top" Margin="0,44,5,0" Cursor="Hand" CornerRadius="30,30,30,30" FontWeight="Bold" BorderThickness="0,0,0,0" AutomationProperties.HelpText="Actualizar lista" Click="RadButton_Click_1">
             <telerik:RadButton.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="#FFD2D2D2" Offset="0.069"/>
