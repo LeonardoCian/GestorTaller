@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data.SQLite;
 using System.IO;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -19,7 +20,7 @@ namespace GestorTaller.Clases
         public string Marca { get; set; }
 
 
-        public void TraerMarcas(ComboBox box)
+        public void TraerMarcas(RadComboBox box)
         {
             List<Marcas> listaMarcas = new List<Marcas>();
 
@@ -33,12 +34,6 @@ namespace GestorTaller.Clases
 
                 using (SQLiteCommand command = new SQLiteCommand(query, connection))
                 {
-                    Marcas asd = new Marcas()
-                    {
-                        Id = 100,
-                        Marca = "Seleccionar..."
-                    };
-                    listaMarcas.Add(asd);
                     using (SQLiteDataReader reader = command.ExecuteReader())
                     {
                         while (reader.Read())
@@ -50,7 +45,6 @@ namespace GestorTaller.Clases
                             };
                             listaMarcas.Add(marca); // Agregar a la lista
                         }
-                        box.DisplayMemberPath = "Marca";
                         box.ItemsSource = listaMarcas;
                     }
                 }

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using Telerik.Windows.Controls;
 
 namespace GestorTaller.Clases
 {
@@ -14,7 +15,7 @@ namespace GestorTaller.Clases
         public string NumRodado { get; set; }
 
 
-        public void TraerNumRodado(ComboBox box)
+        public void TraerNumRodado(RadComboBox box)
         {
             List<NumRodados> ListaNumRodado = new List<NumRodados>();
 
@@ -28,13 +29,6 @@ namespace GestorTaller.Clases
 
                 using (SQLiteCommand command = new SQLiteCommand(query, connection))
                 {
-                    NumRodados asd = new NumRodados()
-                    {
-                        Id = 100,
-                        NumRodado = "Seleccionar..."
-                    };
-                        ListaNumRodado.Add(asd);
-
                     using (SQLiteDataReader reader = command.ExecuteReader())
                     {
                         while (reader.Read())
@@ -46,7 +40,6 @@ namespace GestorTaller.Clases
                             };
                             ListaNumRodado.Add(numRodados); // Agregar a la lista
                         }
-                        box.DisplayMemberPath = "NumRodado";
                         box.ItemsSource = ListaNumRodado;
                     }
                 }

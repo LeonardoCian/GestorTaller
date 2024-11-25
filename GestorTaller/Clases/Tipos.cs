@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using Telerik.Windows.Controls;
 
 namespace GestorTaller.Clases
 {
@@ -14,7 +15,7 @@ namespace GestorTaller.Clases
         public string Tipo { get; set; }
 
         
-            public void TraerTipos(ComboBox box)
+            public void TraerTipos(RadComboBox box)
             {
             List<Tipos> listaClases = new List<Tipos>();
 
@@ -28,12 +29,6 @@ namespace GestorTaller.Clases
 
                 using (SQLiteCommand command = new SQLiteCommand(query, connection))
                 {
-                    Tipos asd = new Tipos()
-                    {
-                        Id = 100,
-                        Tipo = "Seleccionar..."
-                    };
-                    listaClases.Add(asd);
                     using (SQLiteDataReader reader = command.ExecuteReader())
                     {
                         while (reader.Read())
@@ -45,7 +40,6 @@ namespace GestorTaller.Clases
                             };
                             listaClases.Add(tipo); // Agregar a la lista
                         }
-                        box.DisplayMemberPath = "Tipo";
                         box.ItemsSource = listaClases;
                     }
                 }
