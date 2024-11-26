@@ -36,6 +36,11 @@
   <Page Include="RodadosWin.xaml">
     <Generator>MSBuild:Compile</Generator>
   </Page>
+  <Compile Include="app.Designer.cs">
+    <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    <AutoGen>True</AutoGen>
+    <DependentUpon>app.config</DependentUpon>
+  </Compile>
   <Compile Include="App.xaml.cs">
     <DependentUpon>App.xaml</DependentUpon>
     <SubType>Code</SubType>
@@ -67,6 +72,13 @@
     <Content Include="Taller.db">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  
+  <ItemGroup>
+    <None Include="app.config">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>app.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
 
 </Project>
